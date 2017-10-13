@@ -1,0 +1,20 @@
+{
+  "type" : "object",
+  "id" : "urn:jsonschema:io:gravitee:policy:openid:userinfo:configuration:UserInfoPolicyConfiguration",
+  "properties" : {
+    "oauthResource" : {
+      "title": "OpenID Connect resource",
+      "description": "OpenID Connect resource used to validate token.",
+      "type" : "string"
+    },
+    "extractPayload" : {
+      "title": "Extract UserInfo payload",
+      "description": "Extract UserInfo response and put it into the 'openid.userinfo.payload' context attribute.",
+      "type" : "boolean",
+      "default": false
+    }
+  },
+  "required": [
+    "oauthResource"
+  ]
+}
