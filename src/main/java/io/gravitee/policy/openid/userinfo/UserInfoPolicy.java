@@ -22,9 +22,13 @@ import io.gravitee.gateway.api.ExecutionContext;
 import io.gravitee.gateway.api.Request;
 import io.gravitee.gateway.api.Response;
 import io.gravitee.gateway.api.handler.Handler;
+import io.gravitee.policy.api.ChainScope;
 import io.gravitee.policy.api.PolicyChain;
 import io.gravitee.policy.api.PolicyResult;
+import io.gravitee.policy.api.annotations.Category;
 import io.gravitee.policy.api.annotations.OnRequest;
+import io.gravitee.policy.api.annotations.Policy;
+import io.gravitee.policy.api.annotations.Scope;
 import io.gravitee.policy.openid.userinfo.configuration.UserInfoPolicyConfiguration;
 import io.gravitee.resource.api.ResourceManager;
 import io.gravitee.resource.oauth2.api.OAuth2Resource;
@@ -38,6 +42,10 @@ import java.util.Optional;
  * @author David BRASSELY (david.brassely at graviteesource.com)
  * @author GraviteeSource Team
  */
+@Policy(
+        category = @Category(io.gravitee.policy.api.Category.SECURITY),
+        scope = @Scope(ChainScope.API)
+)
 public class UserInfoPolicy {
 
     private final static Logger logger = LoggerFactory.getLogger(UserInfoPolicy.class);
