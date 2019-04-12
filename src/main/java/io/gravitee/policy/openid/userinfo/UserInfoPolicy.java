@@ -56,8 +56,9 @@ public class UserInfoPolicy {
     public void onRequest(Request request, Response response, ExecutionContext executionContext, PolicyChain policyChain) {
         logger.debug("Read access_token from request {}", request.id());
 
-        OAuth2Resource oauth2 = executionContext.getComponent(ResourceManager.class).getResource(
-                userInfoPolicyConfiguration.getOauthResource(), OAuth2Resource.class);
+        String oauth2Resource = executionContext.getTemplateEngine().getValue(userInfoPolicyConfiguration.getOauthResource(), String.class);
+
+        OAuth2Resource oauth2 = executionContext.getComponent(ResourceManager.class).getResource(oauth2Resource, OAuth2Resource.class);
 
         if (oauth2 == null) {
             policyChain.failWith(PolicyResult.failure(HttpStatusCode.UNAUTHORIZED_401,

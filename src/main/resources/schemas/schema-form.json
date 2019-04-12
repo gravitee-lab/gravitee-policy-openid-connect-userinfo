@@ -4,7 +4,7 @@
   "properties" : {
     "oauthResource" : {
       "title": "OpenID Connect resource",
-      "description": "OpenID Connect resource used to validate token.",
+      "description": "OpenID Connect resource used to validate token. (support EL)",
       "type" : "string"
     },
     "extractPayload" : {
