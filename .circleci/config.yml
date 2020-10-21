@@ -20,5 +20,5 @@ workflows:
     jobs:
       # Job defined from the [gravitee-io/gravitee@0.0.1] Circle CI Orb
       - gravitee/release:
-          dry-run: << pipeline.parameters.dry_run >>
+          dry_run: << pipeline.parameters.dry_run >>
           # maven_version: 3.6.3
